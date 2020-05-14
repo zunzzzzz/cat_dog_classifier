@@ -31,11 +31,10 @@ def create_model():
     model.add(layers.MaxPooling2D((2, 2)))
     model.add(layers.Flatten())
     model.add(layers.Dense(64, activation='relu'))
-    model.add(layers.Dense(1, activation='sigmoid'))
-
+    model.add(layers.Dense(1, activation='sigmoid')) 
     model.compile(loss='binary_crossentropy',
             # Hint: optimizer & learning rate  
-            optimizer=optimizers.Adam(lr=0.08),
+            optimizer=optimizers.SGD(lr = 0.08),
               metrics=['acc'])
 
     return model

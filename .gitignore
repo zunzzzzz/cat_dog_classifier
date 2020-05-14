@@ -3,3 +3,4 @@ cat_dog_hvd.py
 checkpoint.h5
 *.docx
 *.pdf
+.vscode
