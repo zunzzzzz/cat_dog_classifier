@@ -35,7 +35,7 @@ def create_model():
 
     model.compile(loss='binary_crossentropy',
             # Hint: optimizer & learning rate  
-            optimizer=optimizers.SGD(lr=0.005),
+            optimizer=optimizers.Adam(lr=0.08),
               metrics=['acc'])
 
     return model
@@ -73,7 +73,7 @@ history = model.fit_generator(
       steps_per_epoch=train_generator.__len__(),
       callbacks=callbacks,
       # Hint: epochs
-      epochs=80,
+      epochs = 50,
       validation_data=validation_generator,
       validation_steps=validation_generator.__len__())
 
