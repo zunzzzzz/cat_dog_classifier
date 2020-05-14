@@ -1,5 +1,4 @@
-*.png
 cat_dog_hvd.py
-checkpoint.h5
 *.docx
+cats_and_dogs_small/
 *.pdf

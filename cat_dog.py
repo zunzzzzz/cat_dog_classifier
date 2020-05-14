@@ -35,7 +35,7 @@ def create_model():
 
     model.compile(loss='binary_crossentropy',
             # Hint: optimizer & learning rate  
-            optimizer=optimizers.Adam(lr=0.08),
+            optimizer=optimizers.Adam(lr=0.0005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False),
               metrics=['acc'])
 
     return model
@@ -45,8 +45,13 @@ model.summary()
 
 # Hint: data augmentation
 train_datagen = ImageDataGenerator(
-    rescale=1./255,)
-
+        rotation_range=45,
+        rescale=1./255,
+        shear_range=0.1,
+        zoom_range=0.2,
+        horizontal_flip=True,
+        width_shift_range=0.1,
+        height_shift_range=0.1)
 # Note that the validation data should not be augmented!
 test_datagen = ImageDataGenerator(rescale=1./255)
 
@@ -73,7 +78,7 @@ history = model.fit_generator(
       steps_per_epoch=train_generator.__len__(),
       callbacks=callbacks,
       # Hint: epochs
-      epochs = 50,
+      epochs = 100,
       validation_data=validation_generator,
       validation_steps=validation_generator.__len__())
 
